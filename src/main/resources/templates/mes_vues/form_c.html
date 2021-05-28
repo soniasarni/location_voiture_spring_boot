@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+<h1>JE SUIS LE FORMULAIRE CONDUCTEUR</h1>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id_conducteur</th>
+      <th scope="col">prenom</th>
+      <th scope="col">nom</th>
+      <th scope="col">modification</th>
+      <th scope="col">suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="conducteur:${conducteurs}">
+		      <th scope="row" th:text="${conducteur.Id_conducteur}"></th>
+		      <td th:text="${conducteur.prenom}"></td>
+		     <td th:text="${conducteur.nom}"></td>
+		  
+		     	<a class="btn btn-info" th:href="@{/show/{Id_conducteur} (id=${conducteur.Id_conducteur}) }"> show </a>
+		     
+		      	<a class="btn btn-danger" th:href="@{/delete/{Id_conducteur} (id=${conducteur.Id_conducteur})}">Supprimer</a>
+		      </td>
+		    </tr>
+  </tbody>
+</table>
+</div>
+	<div class="container">
+		 <form method="post" th:action="@{/form1}" th:object="${conducteur}">
+		  <div class="mb-3">
+		    <label class="form-label">prenom</label>
+		    <input type="text" class="form-control" name=prenom required>
+		  </div>
+		  <div class="mb-3">
+		    <label class="form-label">nom</label>
+		    <input type="text" class="form-control" name=nom required>
+		  </div>
+		
+		  <div>
+		    <button type="submit" class="btn btn-primary">Submit</button>
+		  </div>
+		</form>
+	</div>
+</body>
+</html>

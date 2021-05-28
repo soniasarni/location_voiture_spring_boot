@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>liste des vehicules</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+<h2> formulaire vehicule</h2>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id_vehicule</th>
+      <th scope="col">marque</th>
+      <th scope="col">modele</th>
+      <th scope="col">couleur</th>
+      <th scope="col">immatriculation</th>
+      <th scope="col">modification</th>
+      <th scope="col">suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+             <tr th:each="v:${vehicules}">
+		            <td th:text="${v.Id_vehicule}"></td>
+					<td th:text="${v.marque}"></td>
+					<td th:text="${v.modele}"></td>
+		            <td th:text="${v.couleur}"></td>
+		            <td th:text="${v.immatriculation}"></td>
+			        
+		     </tr>
+  </tbody>
+</table>
+</div>
+	<div class="container">
+		 <form method="post" th:action="@{/form2}" th:object="${vehicule}">
+		  <div class="mb-3">
+		    <label class="form-label">marque</label>
+		    <input type="text" class="form-control" name=marque required>
+		  </div>
+		  <div class="mb-3">
+		    <label class="form-label">modele</label>
+		    <input type="text" class="form-control" name=modele required>
+		  </div>
+		 <div class="mb-3">
+		    <label class="form-label">couleur</label>
+		    <input type="text" class="form-control" name=couleur required>
+		  </div>
+		 <div class="mb-3">
+		    <label class="form-label">immatriculation</label>
+		    <input type="text"  class="form-control" name=immatriculation required>
+		  </div>
+		  <div>
+		    <button type="submit" class="btn btn-primary">Submit</button>
+		  </div>
+		</form>
+	</div>
+</body>
+</html>
