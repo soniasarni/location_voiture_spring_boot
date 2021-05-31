@@ -2,15 +2,19 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import javax.management.AttributeNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.entities.Conducteur;
 import com.example.demo.entities.Vehicule;
 import com.example.demo.repositories.RepositoryConducteur;
 import com.example.demo.repositories.RepositoryVehicule;
@@ -47,6 +51,17 @@ public class Controller_vehicule {
 		
 		return "mes_vues/form_v";
 		
+	}
+	//DELETE vehicule
+	@GetMapping("/index2/{id}")
+	public String delete (@PathVariable(value = "id") Long id_vehicule) throws AttributeNotFoundException {
+		
+		Vehicule vehicule = repositoryVehicule.findById(id_vehicule).orElseThrow(() -> new AttributeNotFoundException("Id non trouvÃ© " +id_vehicule)) ;
+		
+		//employeRepository.delete(employe);
+		repositoryVehicule.deleteById(id_vehicule);
+		
+		return "mes_vues/form_v";
 	}
 	}
 

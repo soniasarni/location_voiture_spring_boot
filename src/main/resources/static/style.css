@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+html body{
+	background:#E3FBFA;
+}
+ #nav{
+	background :black;
+    padding:10px;
+	margin-bottom:30px;
+}
+.espace{
+	margin:15px;
+}
+.item{
+	background:#A9DFBF;
+	border:solid 2px;
+	text-align:center;
+	margin-left:250px;
+	margin-right:250px;
+	padding-left:10px;
+	padding-right:10px;
+	
+}

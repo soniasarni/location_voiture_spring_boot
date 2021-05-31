@@ -1,10 +1,15 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Conducteur{
@@ -14,6 +19,10 @@ private Long id_conducteur ;
 private String prenom;
 @Column(name="nom",length=30)
 private String nom;
+
+@ManyToMany(mappedBy="conducteurs",fetch=FetchType.EAGER)
+
+private Collection<Vehicule>vehicules=new ArrayList<>();
 
 public Conducteur() {
 	super();
