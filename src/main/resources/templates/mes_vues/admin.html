@@ -1,0 +1,28 @@
+<div th:replace="fragment/header::header"></div>
+<meta charset="UTF-8">
+<body>
+  <div class="container">
+   	
+  
+  <table>
+		  <div> le nombre de conducteur:
+		      <span class="badge bg-secondary" th:text="${nbreConducteurs}"></span></div>
+		  <div> le nombre de Véhicule: 
+		      <span class="badge bg-secondary" th:text="${nbreVehicules}"></span></div>
+		  <div>  le nombre d'associations: 
+		      <span class="badge bg-secondary" th:text="${nbreAsso}"></span></div>
+		  <div>Le nombre de conducteurs n’ayant pas de véhicules 
+		      <span class="badge bg-secondary" th:text="${CLibre}"></span></div>
+		  <!--  <div>Afficher les véhicules n’ayant pas de conducteur
+		      <span class="badge bg-secondary" th:text="${VLibre}"></span></div>-->
+  </table>
+
+   
+
+
+
+
+  </div>
+
+</body>
+</html>

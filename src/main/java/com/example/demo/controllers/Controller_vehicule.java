@@ -30,7 +30,7 @@ public class Controller_vehicule {
 	//soumettre mon formulaire
 	@PostMapping("/form2")
 	public String ajout(@Validated Vehicule vehicule, BindingResult bindingResult) {
-     System.out.println(bindingResult);
+    
 			
 			//En cas d'erreurs dans mon formulaire
 			if(bindingResult.hasErrors()) {
@@ -39,15 +39,15 @@ public class Controller_vehicule {
 			}
 			repositoryVehicule.save(vehicule);
 			
-			return "mes_vues/form_v";
+			return "redirect:/form2";
 		}
 	//Liste des vehicules 
 	@GetMapping(value="/form2")
 	public String liste(Model model) {
 		
 		//CRUD ---> R
-		List<Vehicule>vehicul=repositoryVehicule.findAll();
-		model.addAttribute("vehicules",vehicul);
+		
+		model.addAttribute("vehicules",repositoryVehicule.findAll());
 		
 		return "mes_vues/form_v";
 		

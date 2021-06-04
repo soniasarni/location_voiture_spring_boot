@@ -23,27 +23,23 @@ import com.example.demo.repositories.RepositoryConducteur;
 @Controller
 public class Controller_conducteur {
 @Autowired RepositoryConducteur repositoryConducteur;
-//affichage du formulaire
-//@GetMapping("/form1")
-//public String ecran_conducteur() {
-//    return "mes_vues/form_c";
-//}
+
 //ajouter des conducteurs dans db
 @PostMapping("/form1")
-public String ecran_conducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {
+public String ajout(@Validated Conducteur conducteur, BindingResult bindingResult) {
 	//En cas d'erreurs dans mon formulaire
 			if(bindingResult.hasErrors()) {
 				return "mes_vues/form_c";
 			}
 			repositoryConducteur.save(conducteur);
 			
-			return "mes_vues/form_c";
+			return "redirect:/form1";
 		}
 ////afficher la liste des conducteur
 @GetMapping("/form1")
 public String listeC(Model model) {
 	List<Conducteur>conduct=repositoryConducteur.findAll();
-	model.addAttribute("conducteurs", conduct);
+	model.addAttribute("conducteurs",conduct);
 	return "mes_vues/form_c";
 }
 //chercher un conducteur
@@ -57,9 +53,7 @@ public String listeC(Model model) {
 public String delete (@PathVariable(value = "id") Long id_conducteur) throws AttributeNotFoundException {
 	
 	Conducteur Conducteur = repositoryConducteur.findById(id_conducteur).orElseThrow(() -> new AttributeNotFoundException("Id non trouvÃ© " +id_conducteur)) ;
-	
-	//employeRepository.delete(employe);
-	repositoryConducteur.deleteById(id_conducteur);
+	 repositoryConducteur.deleteById(id_conducteur);
 	
 	return "mes_vues/form_c";
 }

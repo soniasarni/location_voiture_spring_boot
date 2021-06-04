@@ -1,16 +1,10 @@
 package com.example.demo.entities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Vehicule {
@@ -26,8 +20,7 @@ private String couleur;
 @Column(name="immatriculation",length=30)
 private String immatriculation;
 
-@OneToMany(fetch=FetchType.EAGER)
-private Collection<Conducteur>conducteurs=new ArrayList<>();
+
 
 
 public Vehicule() {
@@ -74,8 +67,7 @@ public void setImmatriculation(String immatriculation) {
 }
 @Override
 public String toString() {
-	return "Vehicule [id_vehicule=" + id_vehicule + ", marque=" + marque + ", modele=" + modele + ", couleur=" + couleur
-			+ ", immatriculation=" + immatriculation + "]";
+	return  id_vehicule + " " + marque + " " + modele + " " + couleur;
 }
 
 }

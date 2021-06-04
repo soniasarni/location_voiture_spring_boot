@@ -12,30 +12,28 @@
 		          </tr>
 		       </thead>
 		       <tbody>
-			        <tr>
-				       <td></td>
-				       <td></td>
-				       <td></td>
-				       <td></td>
-				       <td></td>
+			        <tr th:each="a:${association}">
+				       <td th:text="${a.id}"></td>
+				       <td th:text="${a.conducteur1}"></td>
+				       <td th:text="${a.vehicule1}"></td>
+				       
 					</tr>
 		        </tbody>
 		</table>
       </div>
 			
 	   <div class="container">
-				<form>
-					 <select class="form-select" aria-label="Default select example" name="conducteur">
+				<form class="form" method="post" th:action="@{/associa}" th:object="${associat}">
+					 <select class="form-select" aria-label="Default select example" name="conducteur1">
 						 <option selected>choisirle conducteur</option>
-						 <option th:each="c:${conducteurs}" th:value="${c.id_conducteur}" th:text="${c.nom}">
-			 
+						 <option th:each="c:${conducteurs}" th:value="${c.id_conducteur}" th:text="${c.nom+' '+ c.prenom}">
+			            
 					</select>
 			    
-					<select class="form-select espace" aria-label="Default select example">
+					<select class="form-select espace" aria-label="Default select example"name="vehicule1">
 						 <option selected>choisir le vehicule</option>
-						 <option value="1">One</option>
-						 <option value="2">Two</option>
-						 <option value="3">Three</option>
+						<option th:each="v:${vehicules}" th:value="${v.id_vehicule}" th:text="${v.marque+' '+v.modele}">>
+						
 					</select>
 					
 					<div>

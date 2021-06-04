@@ -2,10 +2,11 @@ package com.example.demo.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.entities.Conducteur;
-import com.example.demo.entities.Vehicule;
+import com.example.demo.entities.Association;
 
-public interface RepositoryAssociation extends JpaRepository<Conducteur,Vehicule>{
+
+
+public interface RepositoryAssociation extends JpaRepository<Association,Long>{
 
 	//void saveAll(Vehicule_conducteurs vehicule_conducteurs);
 //Conducteur saveConducteur(Conducteur conducteur);
